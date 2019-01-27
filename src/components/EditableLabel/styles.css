@@ -1,0 +1,21 @@
+.label-container {
+  height: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+.text {
+  font-style: italic;
+  line-height: 2.5;
+  width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.editable {
+  margin-top: 5px;
+  width: 40px;
+}

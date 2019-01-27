@@ -1,0 +1,45 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px auto;
+  align-items: center;
+}
+
+.row {
+  grid-column: 1 / span 2;
+  line-height: 2.5;
+}
+
+.row-label-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.row-label {
+  grid-column: 2;
+}
+
+.column-container {
+  grid-column-start: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50px);
+  justify-content: center;
+}
+
+.button {
+  text-align: center;
+  line-height: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.btn-add {
+  color: green;
+}
+
+.btn-remove {
+  color: red;
+}
