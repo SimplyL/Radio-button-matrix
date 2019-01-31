@@ -12,45 +12,39 @@ class EditableLabel extends Component {
     }
   }
 
-  handleEdit = evt => {
-    this.setState({
-      editing: !this.state.editing,
-    });
+  handleEdit = evt => this.setState({ editing: !this.state.editing });
+
+  handleChange = evt => this.setState({ label: evt.target.value });
+
+  handleSubmit = (evt) => {
+    const value = evt.target.value.trim();
+    const { onLabelChange, section, id } = this.props;
+    onLabelChange(value, section, id);
+    value && this.setState({ editing: false });
   }
 
-  handleChange = evt => {
-    this.setState({ label: evt.target.value });
-  }
-
-  handleSubmit = () => {
-    const value = this.state.label.trim();
-    if (value) {
-      this.setState({
-        label: value,
-        editing: false,
-      });
-    }
-  }
-
-  handleKeyDown = (evt) => {
-    evt.which === this.ENTER_KEY && this.handleSubmit();
-  }
-
+  handleKeyDown = (evt) => evt.which === this.ENTER_KEY && this.handleSubmit(evt);
 
   render() {
+    const { editing, label } = this.state;
+    const { labelStyle, inputStyle } = this.props;
+
+    const styleLabel = labelStyle ? labelStyle : ' text';
+    const styleInput = inputStyle ? inputStyle : 'editable';
+
     return (
-      <div className="label-container">
-        <div className={this.state.editing ? 'hidden text' : ' text'} onDoubleClick={this.handleEdit}>
-          {this.state.label}
+      <Fragment>
+        <div className={editing ? 'hidden text' : styleLabel} onDoubleClick={this.handleEdit}>
+          {label}
         </div>
-          <input
-            className={this.state.editing ? 'editable' : 'hidden'}
-            value={this.state.label}
-            onChange={this.handleChange}
-            onBlur={this.handleSubmit}
-            onKeyDown={this.handleKeyDown}
-          />
-      </div>
+        <input
+          className={editing ? styleInput : 'hidden'}
+          value={label}
+          onChange={this.handleChange}
+          onBlur={this.handleSubmit}
+          onKeyDown={this.handleKeyDown}
+        />
+      </Fragment>
     )
   }
 }

@@ -1,5 +1,10 @@
 .grid-container {
   display: grid;
+  grid-template-columns: auto auto;
+}
+
+.matrix-container {
+  display: grid;
   grid-template-columns: 100px auto;
   align-items: center;
 }
@@ -42,4 +47,38 @@
 
 .btn-remove {
   color: red;
+}
+
+.header-container {
+  height: 30px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.title-input {
+  margin-top: 5px;
+}
+
+.label-container {
+  height: 40px;
+}
+
+.legend-item-container {
+  display: grid;
+  grid-template-columns: 40px auto;
+  align-items: center;
+}
+
+.image {
+  background-color: #f2f2f2;
+  color: #a6a6a6;
+  text-align: center;
+  line-height: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
 }

@@ -10,7 +10,17 @@ class UploadImage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    const { decreaseCount } = this.props;
+    const { file } = this.state;
+    file && decreaseCount('images');
+  }
+
   onChange = (evt) => {
+    const { increaseCount } = this.props;
+    const { file } = this.state;
+    !file && increaseCount('images');
+
     this.setState({
       file: URL.createObjectURL(event.target.files[0]),
     })
@@ -19,15 +29,15 @@ class UploadImage extends Component {
   handleClick = () => this.refs.uploadInput.click();
 
   render() {
-    const { id } = this.props;
+    const { id, className } = this.props;
     const { file } = this.state;
 
     return (
       <div className="image-container">
         {
           file ?
-            <img src={file} className="image" onClick={this.handleClick} /> :
-            <div className="image" onClick={this.handleClick}>+</div>
+            <img src={file} className={className} onClick={this.handleClick} /> :
+            <div className={className} onClick={this.handleClick}>+</div>
         }
         <input
           id={id}
